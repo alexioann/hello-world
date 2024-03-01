@@ -19,7 +19,7 @@ def main():
 
         # Append user input data to DataFrame
         new_entry = {'Name': name, 'Age': age}
-        data = data.append(new_entry, ignore_index=True)
+        data = pd.concat([data, pd.DataFrame([new_entry])], ignore_index=True)
         st.session_state.data = data  # Update the session state data
 
         # Create a histogram to display the distribution of ages
