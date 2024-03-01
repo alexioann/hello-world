@@ -26,5 +26,10 @@ def main():
         st.write("Age Histogram")
         st.bar_chart(data['Age'].value_counts())
 
+        # Add option to remove the last entry
+        if st.button('Remove Last Entry'):
+            data = data.iloc[:-1]  # Remove last row
+            st.session_state.data = data  # Update session state data
+
 if __name__ == '__main__':
     main()
