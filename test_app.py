@@ -5,6 +5,9 @@ import pandas as pd
 data = pd.DataFrame(columns=['Weight', 'Height', 'BMI'])
 
 def calculate_bmi(weight, height):
+    # Check if height is not zero to prevent division by zero error
+    if height == 0:
+        return 0
     # Convert height from cm to meters
     height_m = height / 100.0
     # Calculate BMI
@@ -35,7 +38,7 @@ def main():
 
         # Plot the user input data using Streamlit's native plotting functions
         st.write("Graph of Weight, Height, and BMI")
-        st.line_chart(data[['Weight', 'Height', 'BMI']])
+        st.line_chart(data.set_index('Height')[['Weight', 'BMI']])
 
 if __name__ == '__main__':
     main()
