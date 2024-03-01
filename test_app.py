@@ -1,14 +1,6 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Mar  1 09:05:53 2024
-
-@author: AIoanni1
-"""
-
 import streamlit as st
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 
 def calculate_bmi(weight, height):
     # Convert height from cm to meters
@@ -18,7 +10,7 @@ def calculate_bmi(weight, height):
     return bmi
 
 def main():
-    st.title('Simple Streamlit App')
+    st.title('Simple Streamlit App with User Input and Random Graph')
 
     # Add text input boxes for the user's name, weight, and height
     name = st.text_input('Enter your name', 'Your Name')
@@ -43,11 +35,9 @@ def main():
         # Create a DataFrame
         data = pd.DataFrame({'Weight': weights, 'Height': heights, 'BMI': bmis})
 
-        # Plot the data
+        # Plot the data using Streamlit's native plotting functions
         st.write("Random Graph of Weight, Height, and BMI")
-        fig, ax = plt.subplots()
-        data.plot(ax=ax)
-        st.pyplot(fig)
+        st.line_chart(data[['Weight', 'Height', 'BMI']])
 
 if __name__ == '__main__':
     main()
