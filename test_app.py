@@ -1,11 +1,11 @@
 import streamlit as st
 import pandas as pd
 
-# Load existing data or create a new DataFrame
-data = st.session_state.get('data', pd.DataFrame(columns=['Name', 'Age']))
-
 def main():
     st.title('User Data and Age Histogram')
+
+    # Load existing data or create a new DataFrame
+    data = st.session_state.get('data', pd.DataFrame(columns=['Name', 'Age']))
 
     # Add text input boxes for the user's name and age
     name = st.text_input('Enter your name', 'Your Name')
