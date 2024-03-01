@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
 
+# Create an empty DataFrame to store user input data
+data = pd.DataFrame(columns=['Weight', 'Height', 'BMI'])
+
 def calculate_bmi(weight, height):
     # Convert height from cm to meters
     height_m = height / 100.0
@@ -11,8 +14,7 @@ def calculate_bmi(weight, height):
 def main():
     st.title('Simple Streamlit App with User Input and Dynamic Graph')
 
-    # Create an empty DataFrame to store user input data
-    data = pd.DataFrame(columns=['Weight', 'Height', 'BMI'])
+    global data  # Access the global data DataFrame
 
     # Add text input boxes for the user's name, weight, and height
     name = st.text_input('Enter your name', 'Your Name')
