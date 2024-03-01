@@ -5,7 +5,9 @@ def main():
     st.title('User Data and Age Histogram')
 
     # Load existing data or create a new DataFrame
-    data = st.session_state.get('data', pd.DataFrame(columns=['Name', 'Age']))
+    data = st.session_state.get('data')
+    if data is None:
+        data = pd.DataFrame(columns=['Name', 'Age'])
 
     # Add text input boxes for the user's name and age
     name = st.text_input('Enter your name', 'Your Name')
